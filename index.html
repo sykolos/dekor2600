@@ -1,4 +1,4 @@
-﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dekor Vácról</title>
@@ -29,16 +29,18 @@
         }
 
         .navbar {
-            padding: 40px 50px;
+            padding: 30px 50px;
+            margin-bottom: 40px;
         }
 
         .navbar-brand img {
-            height: 75px;
+            height: 65px;
             width: 100%;
         }
 
         .navbar form button {
             margin: 0;
+            height: 65px;
         }
 
         .btn-primary {
@@ -79,7 +81,7 @@
             margin-left: 50px;
             margin-bottom: 50px;
             margin-top: 15px;
-            padding:18px 400px 8px 18px;
+            padding:18px 400px 8px 8px;
         }
 
 @media (max-width: 768px) {
@@ -113,6 +115,7 @@
         }
 
         .why-us-list {
+            gap:6px;
             min-height: 45vh;
         }
 
@@ -216,8 +219,8 @@
             top: 55px;
         }
         .why-us-text{
-            font-size: 1.35em;
-            padding: 8px 16px;
+            font-size: 1.5em;
+            padding: 8px 12px;
         }
 
         .section-header {
@@ -305,12 +308,20 @@
 form .btn{
     margin-top:40px;
 }
+.sticky {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    background: linear-gradient(to right, rgb(255, 104, 83), rgba(255, 104, 83, 0.15));
+}
     </style>
 </head>
 <body>
     
     <main>
-        <nav class="navbar bg-transparent">
+        <nav class="navbar bg-transparent" id="menu">
             <div class="container-fluid">
                 <a class="navbar-brand">
                     <img src="dekor-2600/dekor-2600.svg" alt="Dekor2600" class="img-fluid" />
@@ -321,6 +332,17 @@ form .btn{
                 </form>
             </div>
         </nav>
+        <script>
+            let menu = document.getElementById('menu');
+            let offset = menu.offsetHeight;
+            window.onscroll = function() {
+                if (window.scrollY > offset-5) {
+                    menu.classList.add("sticky");
+                } else if(window.scrollY < offset-10) {
+                    menu.classList.remove("sticky");
+                }
+            }
+        </script>
         <section class="hero-section">
             <div class="container hero-text">
                 <h1>
@@ -377,7 +399,7 @@ form .btn{
                     </div>
                     <div class="why-us-list-item col-2">
                         <img src="dekor-2600/control_point_duplicate.svg" class="img-fluid why-us-img" alt="">
-                        <p class="why-us-text">Folyamatosan frissülő, innovatív megoldásokat kínálunk</p>
+                        <p class="why-us-text">Folyamatosan friss megoldásokat kínálunk</p>
                     </div>
                     <div class="why-us-list-item col-2">
                         <img src="dekor-2600/workspace_premium.svg" class="img-fluid why-us-img" alt="">
