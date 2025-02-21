@@ -42,17 +42,18 @@
         }
 
         .btn-primary {
-            background-color: #000;
+            background-color: #111;
             color: #fff;
-            border-radius: 3px;
+            border-radius: 7px;
             width: 240px;
             height: 75px;
             font-size: 24px;
+            border-color: #111;
         }
 
         section {
-            min-width: 1500px;
-            margin: 0 170px;
+            width: 80vw;
+            margin: 0 auto;
             padding: 0;
         }
 
@@ -62,19 +63,20 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    min-height: 25.5rem;
         }
 
             .hero-section h1 {
                 font-weight: 700;
                 line-height: 1.3;
-                font-size: 3rem;
+                font-size: 4rem;
                 text-align: left;
                 color: #fff;
             }
 
         .hero-text {
             margin-left: 50px;
-            padding-right: 500px;
+            padding-right: 400px;
             margin-bottom: 50px;
             margin-top: 15px;
         }
@@ -101,6 +103,7 @@
             height: 490px;
             background-color: #fff;
             padding: 25px;
+            box-shadow: 5px 5px 45px rgba(0, 0, 0, 0.25);
         }
 
         .why-us {
@@ -109,8 +112,8 @@
         }
 
         .why-us-list {
-            gap: 25px;
-            min-height: 488px;
+            gap: 20px;
+            min-height: 45vh;
         }
 
         .why-us-btn {
@@ -122,26 +125,37 @@
         }
 
         .service-icon {
-            width: 450px;
-            height: 450px;
+            width: 36%;
+            height: 33%;
+            margin-right: 0px;
         }
         /* .service-icon img{
             position: relative;
             right:80px;
          } */
 
+         .service-icon .img-fluid{
+            -webkit-filter: drop-shadow(5px 5px #ff6852);
+            filter: drop-shadow( 5px 5px #ff6852);
+         }
+        .service-icon .noshadow{
+            -webkit-filter: drop-shadow(0 0 0) !important;
+            filter: drop-shadow(0 0 0) !important;
+        }
         .service-text {
-            width: 615px;
+            width: 55%;
             height: 250px;
             background-color: #fff;
             border-radius: 3px;
-            padding: 54px;
+            padding: 40px;
+            margin:0 auto;
+            box-shadow: 7px 7px 50px rgba(0, 0, 0, 0.3);
         }
 
         .circle::before {
             content: "";
-            width: 520px;
-            height: 520px;
+            width: 485px;
+            height: 485px;
             position: absolute !important;
             background-color: transparent;
             border: 15px solid #fff;
@@ -166,6 +180,14 @@
             width: 100%;
             margin: 0 auto !important;
             margin-top: 84px !important;
+            padding-top:60px;
+            padding-bottom:60px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+        }
+        .quotation .section-header{
+            padding-bottom:60px;
         }
 
         .category-header {
@@ -183,14 +205,14 @@
         }
 
         .why-us-text, .service-explain {
-            font-size: 18px;
+            font-size: 1.6em;
             line-height: 22px;
             margin-top: 15px;
         }
 
         .why-us-list {
             position: relative;
-            top: 75px;
+            top: 55px;
         }
 
         .section-header {
@@ -225,12 +247,59 @@
         }
 
         .left-service {
-            margin-right: 160px;
+            margin-right: 170px;
+            margin-top: 80px;
+  margin-bottom: 40px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+
         }
 
         .right-service {
-            margin-left: 160px;
+            margin-left: 170px;
+            margin-top: 80px;
+  margin-bottom: 40px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+
         }
+        form input{
+            height: 42px;
+            font-size: 1.6em !important;
+            padding: 12px 32px !important;
+            margin: 12px;
+            font-style: italic;
+            color:#FF6853 !important;
+        }
+        form textarea{
+            height: 160px;
+  font-size: 1.6em !important;
+  padding: 12px 22px !important;
+  font-style: italic;
+  color: #FF6853 !important;
+  margin: 12px;
+  margin-bottom: 24px;
+}
+.form-check-input{
+    padding: 12px 12px!important;
+}
+.form-check .form-check-input {
+  float: left;
+  margin-left: 0 !important;
+  
+  margin-top: 0!important;
+}
+.form-control::placeholder {
+  color: #ff6852!important;
+}
+.quotation small{
+    font-size:1.5em;
+    padding-top:8px;
+   font-style: italic;
+}
+form .btn{
+    margin-top:40px;
+}
     </style>
 </head>
 <body>
@@ -354,7 +423,7 @@
                 </div>
                 <div class="row d-flex align-items-center justify-content-center left-service">
                     
-                    <div class="service-icon col-5 d-flex align-items-center justify-content-center text-center"><span class="circle l-circle"></span><img src="dekor-2600/egyeb.svg" class="img-fluid" alt="Fóliázás"></div>
+                    <div class="service-icon col-5 d-flex align-items-center justify-content-center text-center"><span class="circle l-circle"></span><img src="dekor-2600/egyeb.svg" class="noshadow img-fluid " alt="Fóliázás"></div>
                     <div class="service-text col-7">
                         <h2 class="service-header">MÉG MIBEN SEGíTHETÜNK?</h2>
                         <p class="service-explain">Minden egyéb helyre szívesen elkészítjük az általad megálmodott fóliákat / reklámokat. Emelett még foglalkozunk matricák, névjegykártya, szórólap és molinók nyomtatásával, hirdető és világító táblák készítése, emblémázás és CNC marás.</P>
@@ -369,7 +438,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h1 class="section-header">KÉRD AJÁNLATUNKAT</h1>
+                        <h1 class="section-header">KÉRD AJÁNLATUNKAT!</h1>
                         <form>
                             <div class="form-group">
                                 <input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Név">
