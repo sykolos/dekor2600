@@ -1,0 +1,391 @@
+// style.scss
+
+// -----------------------------
+// Alap változók
+// -----------------------------
+$font-family: 'Rubik', sans-serif;
+$color-primary: #FF6853;
+$color-accent: #FFD316;
+$color-dark: #111;
+$color-light: #fff;
+$color-text: #222;
+$radius: 0.5rem;
+$shadow: 5px 5px 45px rgba(0, 0, 0, 0.25);
+$max-width: 1400px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+
+// -----------------------------
+// Alap reset
+// -----------------------------
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 18px; // nagyobb betűméret
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-family;
+  background: url('../img/dekor-2600-bg.svg') no-repeat center center / cover;
+  color: $color-text;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+// -----------------------------
+// Gombok
+// -----------------------------
+.btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: $radius;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+
+  &.primary {
+    background-color: #000;
+    color: $color-light;
+
+    &:hover {
+      background-color: #222;
+    }
+  }
+}
+
+// -----------------------------
+// Fejléc
+// -----------------------------
+.site-header {
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  background: linear-gradient(to right, $color-primary, rgba($color-primary, 0.2));
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    .logo {
+      flex-shrink: 0; // ne zsugorodjon össze
+      img {
+        height: 60px;
+        width: auto;
+        display: block; // biztos ami biztos
+      }
+    }
+
+    .cta {
+      margin-left: auto;
+    }
+  }
+}
+
+
+// -----------------------------
+// Hero
+// -----------------------------
+.hero {
+  border: 15px solid $color-light;
+  margin: 5rem auto -2rem auto; // hogy belelógjon a következő szakaszba
+  text-align: left;
+  color: $color-light;
+  padding: 3rem 3rem;
+  max-width: $max-width;
+
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    padding: 2rem;
+    h1 {
+      font-size: 2rem;
+      text-align: center;
+    }
+  }
+}
+
+// -----------------------------
+// Kategóriák
+// -----------------------------
+.categories {
+  margin-top: 1rem;
+  margin-bottom: -2rem;
+
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  .category {
+    background: $color-light;
+    padding: 2rem;
+    width: 300px;
+    box-shadow: $shadow;
+    border-radius: $radius;
+    text-align: center;
+    transform: translateY(-50px);
+
+    h2 {
+      margin-top: 1rem;
+      font-size: 1.25rem;
+      text-transform: uppercase;
+    }
+
+    p {
+      margin-top: 1rem;
+      font-size: 1rem;
+    }
+  }
+}
+
+// -----------------------------
+// Miért válassz minket
+// -----------------------------
+.why-us {
+  text-align: center;
+  margin: 0 auto 5rem auto;
+  border-radius: 300px;
+  border: 15px solid $color-light;
+  padding: 3rem;
+  max-width: $max-width;
+  transform: translateY(-50px);
+
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 3px 3px $color-accent;
+  }
+
+  .reasons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+
+    div {
+      img {
+        margin: 0 auto;
+      }
+
+      p {
+        margin-top: 1rem;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    border: none;
+    padding: 2rem 1rem;
+    .reasons div:last-child {
+      grid-column: span 2;
+      justify-self: center;
+    }
+  }
+}
+
+
+// -----------------------------
+// Szolgáltatások – frissített
+// -----------------------------
+.services {
+  margin-top: 64px;
+  margin-bottom: 124px;
+
+  .section-header {
+    font-weight: 700;
+    font-size: 45px;
+    line-height: 45px;
+    letter-spacing: 5px;
+    text-align: center;
+    text-shadow: 3px 3px #FFD316;
+    margin-bottom: 8rem !important
+  }
+
+  .service-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: -4.6rem auto;
+    gap: 16px;
+
+    .icon-wrapper {
+      position: relative;
+      flex: 0 0 40%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 1 / 1;
+
+      img {
+        max-width: 100%;
+        height: auto;
+        z-index: 1;
+      }
+
+      .circle {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 12px solid #fff;
+        border-radius: 50%;
+        z-index: 0;
+        right: -5rem;
+        top: 0;
+      }
+    }
+
+    .text-wrapper {
+      flex: 0 0 59%;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 3.8rem;
+      box-shadow: 5px 5px 45px rgba(0, 0, 0, 0.25);
+      z-index: 2;
+
+      .service-header {
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+      }
+
+      p {
+        font-size: 1.2rem;
+        line-height: 1;
+        margin: 0;
+      }
+    }
+
+    &.right {
+      flex-direction: row-reverse;
+
+      .icon-wrapper .circle {
+        right: auto;
+        left: -5rem;
+      }
+    }
+
+    &.left {
+      flex-direction: row;
+    }
+  }
+
+  .btn {
+    margin-top: 40px;
+    width: 240px;
+    height: 75px;
+    font-size: 24px;
+    font-weight: 700;
+    border-radius: 7px;
+  }
+
+  @media (max-width: 768px) {
+    .service-block {
+      flex-direction: column !important;
+      text-align: center;
+
+      .icon-wrapper {
+        .circle {
+          display: none;
+        }
+      }
+
+      .text-wrapper {
+        width: 100%;
+        padding: 25px 20px;
+
+        .service-header {
+          font-size: 1.6rem;
+        }
+
+        p {
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+  }
+}
+// -----------------------------
+// Ajánlatkérés
+// -----------------------------
+.quotation {
+  background: $color-primary;
+  color: $color-light;
+  padding: 4rem 2rem;
+
+  h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+
+    input, textarea {
+      padding: 1rem;
+      font-size: 1rem;
+      border-radius: $radius;
+      border: none;
+    }
+
+    .checkbox {
+      font-size: 0.875rem;
+
+      input {
+        margin-right: 0.5rem;
+      }
+    }
+
+    button {
+      align-self: center;
+      margin-top: 1rem;
+    }
+  }
+}
+
+// -----------------------------
+// Footer
+// -----------------------------
+.site-footer {
+  padding: 2rem;
+  text-align: center;
+  background: $color-dark;
+  color: $color-light;
+  font-size: 0.875rem;
+}
