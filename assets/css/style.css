@@ -374,6 +374,9 @@ img {
   .hero {
     border: 8px solid #fff;
   }
+  .hero .container {
+    padding: 0;
+  }
   .why-us {
     margin: 2rem auto 2rem auto;
   }

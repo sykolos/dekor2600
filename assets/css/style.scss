@@ -484,6 +484,9 @@ img {
   }
   .hero{
     border:8px solid $color-light;
+    .container {
+      padding: 0;
+    }
   }
   //why us kisebb betűméret címet jobban letolni
   .why-us{
