@@ -401,13 +401,13 @@ img {
 
       .icon-wrapper {
         margin-bottom: -4rem;
-        .circle {
-          display: none;
-        }
         img{
           height: 16rem;
         }
+        .circle {
+          left: -3rem !important;
       }
+    }
 
       .text-wrapper {
         width: 100%;
@@ -421,6 +421,10 @@ img {
     }
     .service-btn {
       margin-top: 2.8rem;
+    }
+    .services .service-block.right .icon-wrapper .circle {
+      right: -3rem;
+      left: auto;
     }
   }
 }
@@ -459,6 +463,9 @@ img {
     border: none;
     padding: 2rem 1rem;
     transform: translateY(0px);
+    .reasons {
+      grid-template-columns: repeat(2, 1fr);
+    }
     .reasons div:last-child {
       grid-column: span 4;
       justify-self: center;
@@ -513,6 +520,16 @@ img {
     .service-block{
       padding-left:0;
       padding-right:0;
+      .icon-wrapper {
+        margin-bottom: -4rem;
+        .circle {
+          left:-2rem !important;
+        }
+      }
+    }
+    .services .service-block.right .icon-wrapper .circle {
+      right: -2rem;
+      left: auto;
     }
   }
   .categories{
