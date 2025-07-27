@@ -287,6 +287,9 @@ img {
   .categories .category {
     transform: translate(0, 0);
   }
+  .why-us {
+    margin: 2rem auto 5rem auto;
+  }
   .why-us .reasons div:last-child {
     grid-column: span 4;
     justify-self: center;
@@ -342,6 +345,9 @@ img {
     transform: translate(0, 15px);
     line-height: 1.1;
   }
+  .categories .category p {
+    font-size: 1.1rem;
+  }
   .why-us {
     border: none;
     padding: 2rem 1rem;
@@ -367,6 +373,9 @@ img {
   }
   .hero {
     border: 8px solid #fff;
+  }
+  .why-us {
+    margin: 2rem auto 2rem auto;
   }
   .why-us .reasons {
     grid-template-columns: repeat(2, 1fr);
