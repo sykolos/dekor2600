@@ -350,7 +350,7 @@ img {
   .section-title {
     font-size: 2rem;
   }
-  .site-header {
+  .site-header .container {
     justify-content: center;
   }
   .site-header .cta {

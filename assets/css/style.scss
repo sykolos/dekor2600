@@ -458,7 +458,10 @@ img {
     font-size: 2rem;
   }
   .site-header {
-    justify-content:center;
+    .container{
+      justify-content:center;
+    }
+    
     .cta {
       display: none;
     }
