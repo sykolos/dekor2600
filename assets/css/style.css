@@ -134,7 +134,7 @@ img {
   margin: 0 auto 5rem auto;
   border-radius: 300px;
   border: 15px solid #fff;
-  padding: 3rem;
+  padding: 5rem 3rem 3rem 3rem;
   max-width: 1400px;
   transform: translateY(-40px);
 }
@@ -253,8 +253,9 @@ img {
   border: none;
 }
 .quotation form .checkbox {
-  font-size: 1rem;
-  color: #fff;
+  font-size: 1.1rem;
+  color: #111;
+  font-style: italic;
 }
 .quotation form .checkbox input {
   margin-right: 0.5rem;
@@ -267,9 +268,29 @@ img {
 .site-footer {
   padding: 2rem;
   text-align: center;
-  background: #01137B;
+  background: #000F97;
   color: #fff;
   font-size: 0.875rem;
+}
+
+.privacy-section {
+  max-width: 1400px;
+  margin: 5rem auto;
+}
+.privacy-section .container {
+  background-color: #fff;
+  color: #111;
+  padding: 3rem;
+}
+.privacy-section .container h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  text-transform: capitalize;
+}
+.privacy-section .container ul {
+  padding-left: 1rem;
 }
 
 @media (max-width: 75rem) {
@@ -417,6 +438,68 @@ img {
   }
   .categories .category {
     transform: translate(0, 0px);
+  }
+}
+.cookie-popup {
+  position: fixed;
+  top: 50vh;
+  left: 20px;
+  right: 20px;
+  background-color: #fff;
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  border-radius: 2px;
+  font-size: 1.4rem;
+  z-index: 1000;
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+  line-height: 1.4;
+  animation: fadeInUp 0.5s ease-in-out;
+}
+.cookie-popup .cookie-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cookie-popup .cookie-content p {
+  margin-bottom: 2rem;
+}
+.cookie-popup .cookie-content p a {
+  color: #FF6853;
+  text-decoration: none;
+}
+.cookie-popup .cookie-content p a:hover {
+  text-decoration: underline;
+}
+.cookie-popup .cookie-content .cookie-buttons {
+  display: flex;
+  gap: 10px;
+}
+.cookie-popup .cookie-content .cookie-buttons .btn {
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+.cookie-popup .cookie-content .cookie-buttons .accept {
+  background-color: #FF6853;
+  color: #fff;
+}
+.cookie-popup .cookie-content .cookie-buttons .decline {
+  background-color: #ddd;
+  color: #111;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

@@ -9,7 +9,7 @@ $color-accent: #FFD316;
 $color-dark: #111;
 $color-light: #fff;
 $color-text: #222;
-$color-blue: #01137B;
+$color-blue: #000F97;
 $radius: 2px;
 $shadow: 5px 5px 25px rgba(0, 0, 0, 0.45);
 $max-width: 1400px;
@@ -183,7 +183,7 @@ img {
   margin: 0 auto 5rem auto;
   border-radius: 300px;
   border: 15px solid $color-light;
-  padding: 3rem;
+  padding: 5rem 3rem 3rem 3rem;
   max-width: $max-width;
   transform: translateY(-40px);
 
@@ -329,8 +329,9 @@ img {
     }
 
     .checkbox {
-      font-size: 1rem;
-      color: $color-light;
+      font-size: 1.1rem;
+      color: $color-dark;
+      font-style: italic;
 
       input {
         margin-right: 0.5rem;
@@ -355,7 +356,28 @@ img {
   font-size: 0.875rem;
 }
 
-
+// -----------------------------
+// Adatvédelem
+// -----------------------------
+.privacy-section{
+  max-width: $max-width;
+  margin: 5rem auto;
+  .container{
+    background-color: $color-light;
+    color:$color-dark;
+    padding: 3rem;
+    h2{
+        font-size: 1.8rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+        text-transform: capitalize;
+    }
+    ul{
+      padding-left: 1rem;
+    }
+  }
+}
 // -----------------------------
 // Media Queries
 // -----------------------------
@@ -540,4 +562,69 @@ img {
   }
 
 
+}
+//cookie pop-up
+.cookie-popup {
+  position: fixed;
+  top: 50vh;
+  left: 20px;
+  right: 20px;
+  background-color: #fff;
+  box-shadow: 0 15px 15px rgba(0,0,0,.4);
+  padding: 20px;
+  border-radius: $radius;
+  font-size: 1.4rem;
+  z-index: 1000;
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+  line-height: 1.4;
+  animation: fadeInUp .5s ease-in-out;
+
+  .cookie-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      margin-bottom: 2rem;
+
+      a {
+        color: $color-primary;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .cookie-buttons {
+      display: flex;
+      gap: 10px;
+
+      .btn {
+        padding: 8px 16px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .accept {
+        background-color: $color-primary;
+        color: $color-light;
+      }
+
+      .decline {
+        background-color: #ddd;
+        color: $color-dark;
+      }
+    }
+  }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
