@@ -17,10 +17,9 @@ if (
   !filter_var($data['email'], FILTER_VALIDATE_EMAIL) ||
   empty($data['privacy'])
 ) {
-  echo json_encode(["message" => "Kérlek töltsd ki helyesen a kötelező mezőket."]);
+  echo json_encode(["status" => "error", "message" => "Kérlek töltsd ki helyesen a kötelező mezőket."]);
   exit;
 }
-
 $mail = new PHPMailer(true);
 try {
   // SMTP beállítások
@@ -45,7 +44,7 @@ try {
               . "Üzenet:\n{$data['message']}";
 
   $mail->send();
-  echo json_encode(["message" => "Üzenet sikeresen elküldve!"]);
+  echo json_encode(["status" => "success", "message" => "Üzenet sikeresen elküldve!"]);
 } catch (Exception $e) {
-  echo json_encode(["message" => "Hiba: " . $mail->ErrorInfo]);
+  echo json_encode(["status" => "error", "message" => "Hiba: " . $mail->ErrorInfo]);
 }

@@ -11,33 +11,56 @@ window.addEventListener("scroll", () => {
 });
 
 // email on CTA click
-document.getElementById('contact-form').addEventListener('submit', async function (e) {
-  e.preventDefault();
-  const form = e.target;
-  const data = {
-    name: form.name.value.trim(),
-    email: form.email.value.trim(),
-    phone: form.phone.value.trim(),
-    message: form.message.value.trim(),
-    privacy: form.privacy.checked
-  };
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById('contact-form');
+  const responseBox = document.getElementById('form-response');
 
-  if (!data.name || !data.email || !data.privacy) {
-    document.getElementById('form-response').innerText = "Kérlek töltsd ki a kötelező mezőket.";
-    return;
-  }
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
 
-  try {
-    const res = await fetch('assets/php/send.php', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    });
-    const result = await res.json();
-    document.getElementById('form-response').innerText = result.message;
-  } catch (error) {
-    document.getElementById('form-response').innerText = "Hiba történt a küldés során.";
-  }
+    const data = {
+      name: form.name.value.trim(),
+      email: form.email.value.trim(),
+      phone: form.phone.value.trim(),
+      message: form.message.value.trim(),
+      privacy: form.privacy.checked
+    };
+
+    // Kötelező mezők ellenőrzése kliens oldalon
+    if (!data.name || !data.email || !data.privacy) {
+      responseBox.style.color = "red";
+      responseBox.innerText = "Kérlek töltsd ki a kötelező mezőket.";
+      return;
+    }
+
+    try {
+      const res = await fetch('assets/php/send.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      // Ha nem JSON-t kaptunk, dobjunk hibát
+      if (!res.ok) {
+        throw new Error("Szerverhiba történt");
+      }
+
+      const result = await res.json();
+
+      if (result.status === "success") {
+        responseBox.style.color = "green";
+        responseBox.innerText = result.message;
+        form.reset(); // ürítsd ki a formot siker után
+      } else {
+        responseBox.style.color = "red";
+        responseBox.innerText = result.message || "Ismeretlen hiba történt.";
+      }
+
+    } catch (error) {
+      responseBox.style.color = "red";
+      responseBox.innerText = "Hiba történt a küldés során. Próbáld újra később.";
+    }
+  });
 });
 
 //google analitycs

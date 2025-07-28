@@ -354,6 +354,10 @@ img {
   background: $color-blue;
   color: $color-light;
   font-size: 0.875rem;
+  a{
+    text-decoration: none;
+    color:$color-light;
+  }
 }
 
 // -----------------------------
@@ -364,6 +368,7 @@ img {
   margin: 5rem auto;
   .container{
     background-color: $color-light;
+    border-radius: $radius;
     color:$color-dark;
     padding: 3rem;
     h2{
@@ -380,6 +385,7 @@ img {
 }
 .impresszum{
   text-align: center;
+
 }
 // -----------------------------
 // Media Queries
