@@ -272,6 +272,10 @@ img {
   color: #fff;
   font-size: 0.875rem;
 }
+.site-footer a {
+  text-decoration: none;
+  color: #fff;
+}
 
 .privacy-section, .impresszum {
   max-width: 1400px;
@@ -279,6 +283,7 @@ img {
 }
 .privacy-section .container, .impresszum .container {
   background-color: #fff;
+  border-radius: 2px;
   color: #111;
   padding: 3rem;
 }
@@ -291,6 +296,10 @@ img {
 }
 .privacy-section .container ul, .impresszum .container ul {
   padding-left: 1rem;
+}
+
+.impresszum {
+  text-align: center;
 }
 
 @media (max-width: 75rem) {
@@ -440,19 +449,33 @@ img {
     transform: translate(0, 0px);
   }
 }
-.cookie-popup {
+.cookie-overlay {
   position: fixed;
-  top: 50vh;
-  left: 20px;
-  right: 20px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.cookie-popup {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  display: block;
   background-color: #fff;
   box-shadow: 0 15px 15px rgba(0, 0, 0, 0.4);
   padding: 20px;
   border-radius: 2px;
   font-size: 1.4rem;
   z-index: 1000;
-  max-width: 400px;
-  margin: auto;
+  max-width: 600px;
+  margin: 0;
   text-align: center;
   line-height: 1.4;
   animation: fadeInUp 0.5s ease-in-out;
@@ -490,6 +513,10 @@ img {
 .cookie-popup .cookie-content .cookie-buttons .decline {
   background-color: #ddd;
   color: #111;
+}
+
+body.no-scroll {
+  overflow: hidden;
 }
 
 @keyframes fadeInUp {

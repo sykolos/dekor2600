@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //google analitycs
 document.addEventListener("DOMContentLoaded", function () {
-  const cookiePopup = document.getElementById("cookie-popup");
+  const cookieOverlay = document.getElementById("cookie-overlay");
   const acceptBtn = document.getElementById("cookie-accept");
   const declineBtn = document.getElementById("cookie-decline");
 
@@ -89,24 +89,34 @@ document.addEventListener("DOMContentLoaded", function () {
     return "";
   }
 
+  function showCookiePopup() {
+    cookieOverlay.style.display = "flex"; // overlay flex-el középre igazít
+    document.body.classList.add("no-scroll");
+  }
+
+  function hideCookiePopup() {
+    cookieOverlay.style.display = "none";
+    document.body.classList.remove("no-scroll");
+  }
+
   if (getCookie("analyticsConsent") === "") {
-    cookiePopup.style.display = "block";
+    showCookiePopup();
   } else {
-    cookiePopup.style.display = "none";
+    hideCookiePopup();
     if(getCookie("analyticsConsent") === "accepted") {
       loadAnalytics();
     }
   }
 
   acceptBtn.addEventListener("click", function () {
-    setCookie("analyticsConsent", "accepted", 180); //180 nap = 6 hónap
-    cookiePopup.style.display = "none";
+    setCookie("analyticsConsent", "accepted", 180);
+    hideCookiePopup();
     loadAnalytics();
   });
 
   declineBtn.addEventListener("click", function () {
     setCookie("analyticsConsent", "declined", 180);
-    cookiePopup.style.display = "none";
+    hideCookiePopup();
   });
 
   function loadAnalytics() {

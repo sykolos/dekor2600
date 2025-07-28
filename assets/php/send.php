@@ -6,45 +6,67 @@ require __DIR__ . '/mailer/PHPMailer.php';
 require __DIR__ . '/mailer/SMTP.php';
 require __DIR__ . '/mailer/Exception.php';
 
-$config = include 'env.php';
+header('Content-Type: application/json; charset=utf-8');
 
+// env.php betöltése
+$config = include __DIR__ . '/env.php';
+
+// Bejövő adat
 $data = json_decode(file_get_contents("php://input"), true);
 
 // Validáció
 if (
-  empty($data['name']) ||
-  empty($data['email']) ||
-  !filter_var($data['email'], FILTER_VALIDATE_EMAIL) ||
-  empty($data['privacy'])
+    empty($data['name']) ||
+    empty($data['email']) ||
+    !filter_var($data['email'], FILTER_VALIDATE_EMAIL) ||
+    empty($data['privacy'])
 ) {
-  echo json_encode(["status" => "error", "message" => "Kérlek töltsd ki helyesen a kötelező mezőket."]);
-  exit;
+    echo json_encode([
+        "status" => "error",
+        "message" => "Kérlek töltsd ki helyesen a kötelező mezőket."
+    ]);
+    exit;
 }
+
 $mail = new PHPMailer(true);
+
 try {
-  // SMTP beállítások
-  $mail->isSMTP();
-  $mail->Host = $config['smtp_host'];
-  $mail->SMTPAuth = true;
-  $mail->Username = $config['smtp_user'];
-  $mail->Password = $config['smtp_pass'];
-  $mail->SMTPSecure = $config['smtp_secure'];
-  $mail->Port = $config['smtp_port'];
+    // SMTP beállítások
+    $mail->isSMTP();
+    $mail->Host       = $config['smtp_host'];
+    $mail->SMTPAuth   = true;
+    $mail->Username   = $config['smtp_user'];
+    $mail->Password   = $config['smtp_pass'];
+    $mail->SMTPSecure = $config['smtp_secure']; 
+    $mail->Port       = $config['smtp_port'];
 
-  // Feladó és címzett
-  $mail->setFrom($config['smtp_user'], $config['from_name']);
-  $mail->addAddress($config['smtp_user'], 'Bejövő ajánlat'); // saját magadnak
+    // Feladó és címzett
+    $mail->setFrom('info@dekor26.hu', 'Dekor2600 kapcsolat'); 
+    $mail->addAddress('info@dekor26.hu', 'Bejövő ajánlat'); 
 
-  // E-mail tartalom
-  $mail->isHTML(false);
-  $mail->Subject = 'Ajánlatkérés: ' . $data['name'];
-  $mail->Body = "Név: {$data['name']}\n"
-              . "Email: {$data['email']}\n"
-              . "Telefon: {$data['phone']}\n"
-              . "Üzenet:\n{$data['message']}";
+    // A felhasználó email címét válaszcímnek beállítjuk
+    if (!empty($data['email'])) {
+        $mail->addReplyTo($data['email'], $data['name']);
+    }
 
-  $mail->send();
-  echo json_encode(["status" => "success", "message" => "Üzenet sikeresen elküldve!"]);
+    // Email tartalom
+    $mail->isHTML(false);
+    $mail->Subject = 'Új ajánlatkérés: ' . htmlspecialchars($data['name']);
+    $mail->Body    = 
+        "Név: " . htmlspecialchars($data['name']) . "\n" .
+        "Email: " . htmlspecialchars($data['email']) . "\n" .
+        "Telefon: " . htmlspecialchars($data['phone']) . "\n\n" .
+        "Üzenet:\n" . htmlspecialchars($data['message']);
+
+    $mail->send();
+
+    echo json_encode([
+        "status" => "success",
+        "message" => "Üzenet sikeresen elküldve!"
+    ]);
 } catch (Exception $e) {
-  echo json_encode(["status" => "error", "message" => "Hiba: " . $mail->ErrorInfo]);
+    echo json_encode([
+        "status" => "error",
+        "message" => "Hiba: " . $mail->ErrorInfo . " | " . $e->getMessage()
+    ]);
 }
