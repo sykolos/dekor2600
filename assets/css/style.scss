@@ -357,9 +357,9 @@ img {
 }
 
 // -----------------------------
-// Adatvédelem
+// Adatvédelem és impresszum
 // -----------------------------
-.privacy-section{
+.privacy-section, .impresszum{
   max-width: $max-width;
   margin: 5rem auto;
   .container{
@@ -377,6 +377,9 @@ img {
       padding-left: 1rem;
     }
   }
+}
+.impresszum{
+  text-align: center;
 }
 // -----------------------------
 // Media Queries

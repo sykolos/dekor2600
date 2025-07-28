@@ -273,23 +273,23 @@ img {
   font-size: 0.875rem;
 }
 
-.privacy-section {
+.privacy-section, .impresszum {
   max-width: 1400px;
   margin: 5rem auto;
 }
-.privacy-section .container {
+.privacy-section .container, .impresszum .container {
   background-color: #fff;
   color: #111;
   padding: 3rem;
 }
-.privacy-section .container h2 {
+.privacy-section .container h2, .impresszum .container h2 {
   font-size: 1.8rem;
   font-weight: 700;
   letter-spacing: 1px;
   margin-bottom: 12px;
   text-transform: capitalize;
 }
-.privacy-section .container ul {
+.privacy-section .container ul, .impresszum .container ul {
   padding-left: 1rem;
 }
 
