@@ -9,8 +9,7 @@ window.addEventListener("scroll", () => {
     header.classList.remove("scrolled");
   }
 });
-
-// email on CTA click
+//cta send email
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById('contact-form');
   const responseBox = document.getElementById('form-response');
@@ -26,9 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
       privacy: form.privacy.checked
     };
 
-    // Kötelező mezők ellenőrzése kliens oldalon
     if (!data.name || !data.email || !data.privacy) {
-      responseBox.style.color = "red";
+      responseBox.style.color = "white";
       responseBox.innerText = "Kérlek töltsd ki a kötelező mezőket.";
       return;
     }
@@ -40,25 +38,21 @@ document.addEventListener("DOMContentLoaded", function () {
         body: JSON.stringify(data)
       });
 
-      // Ha nem JSON-t kaptunk, dobjunk hibát
       if (!res.ok) {
-        throw new Error("Szerverhiba történt");
+        throw new Error();
       }
 
       const result = await res.json();
 
       if (result.status === "success") {
-        responseBox.style.color = "green";
         responseBox.innerText = result.message;
-        form.reset(); // ürítsd ki a formot siker után
+        form.reset();
       } else {
-        responseBox.style.color = "red";
-        responseBox.innerText = result.message || "Ismeretlen hiba történt.";
+        responseBox.innerText = "Hiba történt a küldés során.";
       }
 
-    } catch (error) {
-      responseBox.style.color = "red";
-      responseBox.innerText = "Hiba történt a küldés során. Próbáld újra később.";
+    } catch {
+      responseBox.innerText = "Hiba történt a küldés során.";
     }
   });
 });
@@ -122,12 +116,12 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadAnalytics() {
     const gaScript = document.createElement("script");
     gaScript.async = true;
-    gaScript.src = "https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID";
+    gaScript.src = "https://www.googletagmanager.com/gtag/js?id=G-PMZKNVVRQG";
     document.head.appendChild(gaScript);
 
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'GA_MEASUREMENT_ID');
+    gtag('config', 'G-PMZKNVVRQG');
   }
 });
